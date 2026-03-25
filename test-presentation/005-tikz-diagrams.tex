@@ -1,0 +1,173 @@
+\section{TikZ Diagrams}
+
+\begin{frame}{Architecture Diagram with Pillars}
+  \begin{block}{Core Message}
+    \scriptsize
+    TikZ enables complex architectural diagrams with styled nodes, arrows, and labels.
+  \end{block}
+
+  \vspace{0.2cm}
+
+  \begin{center}
+    \begin{tikzpicture}[scale=0.62, transform shape,
+        pillar/.style={rectangle, draw, thick, rounded corners,
+                       text width=2.4cm, text centered, minimum height=2.8cm, font=\tiny\bfseries},
+        base/.style={rectangle, draw, thick, rounded corners, fill=accentgray!10,
+                     text width=11cm, text centered, minimum height=0.8cm, font=\scriptsize\bfseries}]
+
+      \node[pillar, fill=accentblue!15] (p1) at (0,0) {
+        \faIcon{project-diagram}\\[4pt]
+        Service\\Discovery\\[4pt]
+        \normalfont\tiny DNS-based\\
+        Health checks\\
+        Load balancing
+      };
+      \node[pillar, fill=accentgreen!15] (p2) at (3.2,0) {
+        \faDatabase\\[4pt]
+        Data\\Layer\\[4pt]
+        \normalfont\tiny PostgreSQL\\
+        Redis cache\\
+        TimescaleDB
+      };
+      \node[pillar, fill=accentorange!15] (p3) at (6.4,0) {
+        \faIcon{chart-bar}\\[4pt]
+        Observability\\[4pt]
+        \normalfont\tiny OpenTelemetry\\
+        Prometheus\\
+        Grafana
+      };
+      \node[pillar, fill=accentpurple!15] (p4) at (9.6,0) {
+        \faIcon{shield-alt}\\[4pt]
+        Security\\[4pt]
+        \normalfont\tiny mTLS\\
+        RBAC\\
+        Audit logging
+      };
+
+      % Base
+      \node[base] (b) at (4.8,-2.4) {
+        \faPlug\ \ Infrastructure Layer (Kubernetes $\cdot$ Podman $\cdot$ Systemd $\cdot$ Bare Metal)
+      };
+
+      % Connections
+      \draw[->, thick, accentgray] (p1) -- (p1 |- b.north);
+      \draw[->, thick, accentgray] (p2) -- (p2 |- b.north);
+      \draw[->, thick, accentgray] (p3) -- (p3 |- b.north);
+      \draw[->, thick, accentgray] (p4) -- (p4 |- b.north);
+    \end{tikzpicture}
+  \end{center}
+
+  \begin{exampleblock}{Design Principle}
+    \scriptsize
+    Each pillar is independently deployable. Teams can adopt components
+    incrementally based on their maturity level.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Network Topology Diagram}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.55, transform shape,
+        comp/.style={rectangle, draw, rounded corners, fill=accentblue!15, text width=2.2cm, align=center, minimum height=0.9cm, font=\tiny\bfseries},
+        config/.style={rectangle, draw, dashed, fill=accentorange!10, text width=2.5cm, align=center, minimum height=0.6cm, font=\tiny},
+        arrow/.style={->, >=stealth, thick}]
+
+      \node[comp] (client) at (0,0) {Client\\Application};
+      \node[comp] (lb) at (5,0) {Load\\Balancer};
+      \node[comp, fill=accentgreen!15] (api1) at (10,1.5) {API Server\\(Instance 1)};
+      \node[comp, fill=accentgreen!15] (api2) at (10,-1.5) {API Server\\(Instance 2)};
+      \node[comp, fill=accentpurple!10] (db) at (15,0) {Database\\(Primary)};
+
+      \node[config] (c1) at (5,-2.5) {Health check\\interval: 10s};
+      \node[config] (c2) at (15,-2.5) {Connection\\pool: 20};
+
+      \draw[arrow] (client) -- node[above, font=\tiny] {HTTPS} (lb);
+      \draw[arrow] (lb) -- node[above, font=\tiny] {Round Robin} (api1);
+      \draw[arrow] (lb) -- node[below, font=\tiny] {Round Robin} (api2);
+      \draw[arrow] (api1) -- node[above, font=\tiny] {mTLS} (db);
+      \draw[arrow] (api2) -- node[below, font=\tiny] {mTLS} (db);
+
+      \draw[->, dashed, accentgray] (c1) -- (lb);
+      \draw[->, dashed, accentgray] (c2) -- (db);
+    \end{tikzpicture}
+  \end{center}
+
+  \vspace{0.2cm}
+
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Network Properties}
+        \scriptsize
+        \begin{itemize}
+          \setlength{\itemsep}{0pt}
+          \item End-to-end TLS encryption
+          \item Health-based routing
+          \item Automatic failover
+          \item Connection pooling
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Security Notes}
+        \scriptsize
+        \begin{itemize}
+          \setlength{\itemsep}{0pt}
+          \item All connections use mTLS
+          \item Certificate rotation every 90 days
+          \item Network policies restrict access
+          \item Audit logging on all endpoints
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Pie Chart and Line Graph}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{center}
+        \textbf{\scriptsize Resource Distribution}
+
+        \vspace{0.2cm}
+
+        \begin{tikzpicture}[scale=0.8]
+          % Pie chart (shifted right to center visually within the column)
+          \fill[accentgreen] (0.8,0) circle (1.2);
+          \fill[accentblue] (0.8,0) -- ++(90:1.2) arc(90:162:1.2) -- cycle;
+          \fill[accentorange] (0.8,0) -- ++(162:1.2) arc(162:210:1.2) -- cycle;
+          \fill[accentred] (0.8,0) -- ++(210:1.2) arc(210:234:1.2) -- cycle;
+          \fill[accentpurple] (0.8,0) -- ++(234:1.2) arc(234:270:1.2) -- cycle;
+
+          % Legend
+          \node[font=\tiny, anchor=west] at (-1.5,-1.8) {\textcolor{accentgreen}{$\blacksquare$} Compute (50\%)};
+          \node[font=\tiny, anchor=west] at (1.0,-1.8) {\textcolor{accentblue}{$\blacksquare$} Storage (20\%)};
+          \node[font=\tiny, anchor=west] at (-1.5,-2.2) {\textcolor{accentorange}{$\blacksquare$} Network (13\%)};
+          \node[font=\tiny, anchor=west] at (1.0,-2.2) {\textcolor{accentred}{$\blacksquare$} Security (7\%)};
+          \node[font=\tiny, anchor=west] at (-1.5,-2.6) {\textcolor{accentpurple}{$\blacksquare$} Other (10\%)};
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \begin{center}
+        \textbf{\scriptsize Request Latency Over Time (24h)}
+
+        \vspace{0.2cm}
+
+        \begin{tikzpicture}[scale=0.7]
+          % Axes
+          \draw[accentgray, thin] (0,0) -- (0,3);
+          \draw[accentgray, thin] (0,0) -- (6,0);
+
+          % Simulated line chart
+          \draw[accentgreen, thick] (0,2.4) -- (1,2.3) -- (2,2.5) -- (3,2.2) -- (4,2.6) -- (5,2.4) -- (6,2.5);
+          \draw[accentred, thick, dashed] (0,0.5) -- (1,0.6) -- (2,0.5) -- (3,0.8) -- (4,0.6) -- (5,0.7) -- (6,0.5);
+
+          % Labels
+          \node[font=\tiny, accentgray, rotate=90] at (-0.4,1.5) {Latency (ms)};
+          \node[font=\tiny, accentgray] at (3,-0.3) {Time (hours)};
+          \node[font=\tiny, anchor=west] at (0.5,3.2) {\textcolor{accentgreen}{\rule{0.3cm}{1pt}} p50};
+          \node[font=\tiny, anchor=west] at (2.5,3.2) {\textcolor{accentred}{\rule{0.3cm}{1pt}} p99};
+        \end{tikzpicture}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}

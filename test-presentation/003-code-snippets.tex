@@ -1,0 +1,155 @@
+\section{Code Snippets}
+
+\begin{frame}[fragile]{Code Listing - Bash and Python}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{lstlisting}[language=bash, numbers=left, basicstyle=\ttfamily\tiny, title={\tiny\bfseries Shell Script Example}]
+#!/bin/bash
+# Deploy application to staging
+set -euo pipefail
+
+DEPLOY_ENV="${1:-staging}"
+IMAGE="registry.example.com/app:latest"
+
+echo "Deploying to ${DEPLOY_ENV}..."
+
+podman pull "${IMAGE}"
+podman run -d \
+  --name myapp \
+  -p 8080:8080 \
+  -e ENV="${DEPLOY_ENV}" \
+  "${IMAGE}"
+
+echo "Deployment complete!"
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{lstlisting}[language=python, numbers=left, basicstyle=\ttfamily\tiny, title={\tiny\bfseries Python Example}]
+#!/usr/bin/env python3
+"""Sample API client."""
+import requests
+from typing import Optional
+
+class APIClient:
+    def __init__(self, base_url: str):
+        self.base_url = base_url
+        self.session = requests.Session()
+
+    def get_status(self) -> dict:
+        """Fetch service status."""
+        resp = self.session.get(
+            f"{self.base_url}/api/v1/status"
+        )
+        resp.raise_for_status()
+        return resp.json()
+
+if __name__ == "__main__":
+    client = APIClient("https://api.example.com")
+    print(client.get_status())
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Code Listing - YAML and JSON}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \begin{lstlisting}[style=yamlstyle, basicstyle=\ttfamily\fontsize{4.5}{5.5}\selectfont, title={\tiny\bfseries Kubernetes Deployment (YAML)}]
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-application
+  namespace: production
+  labels:
+    app: my-app
+    version: v2.1.0
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: app
+          image: registry.example.com/app:v2.1.0
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 10
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \begin{lstlisting}[language=, basicstyle=\ttfamily\fontsize{4.5}{5.5}\selectfont, title={\tiny\bfseries API Response (JSON)}]
+{
+  "status": "healthy",
+  "version": "2.1.0",
+  "components": {
+    "database": {
+      "status": "connected",
+      "latency_ms": 12
+    },
+    "cache": {
+      "status": "connected",
+      "hit_rate": 0.94
+    },
+    "queue": {
+      "status": "connected",
+      "pending_jobs": 42
+    }
+  },
+  "metrics": {
+    "requests_per_sec": 1250,
+    "error_rate": 0.002,
+    "p99_latency_ms": 145,
+    "active_connections": 89
+  },
+  "uptime_seconds": 864000
+}
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Code in Blocks and Verbatim}
+  \begin{exampleblock}{\scriptsize Configuration Example}
+    \begin{lstlisting}[language=bash, numbers=none, basicstyle=\ttfamily\fontsize{5}{6}\selectfont]
+# /etc/myapp/config.conf
+server_address = "0.0.0.0"
+server_port = 8443
+tls_enabled = true
+tls_cert = "/etc/pki/tls/certs/server.pem"
+tls_key = "/etc/pki/tls/private/server-key.pem"
+log_level = "info"
+    \end{lstlisting}
+  \end{exampleblock}
+
+  \vspace{0.05cm}
+
+  \begin{block}{\scriptsize Verbatim Text Example}
+    {\fontsize{5}{6}\selectfont
+    \begin{verbatim}
+$ curl --cert client.pem --key client-key.pem \
+    https://server:8443/api/v1/status
+{"status":"ok","version":"2.1.0"}
+    \end{verbatim}}
+  \end{block}
+
+  \vspace{0.05cm}
+
+  \begin{alertblock}{\scriptsize Important Note}
+    \tiny
+    Use \texttt{[fragile]} frame option when including \texttt{lstlisting} or
+    \texttt{verbatim} environments. Without it, LaTeX will fail to compile.
+  \end{alertblock}
+\end{frame}

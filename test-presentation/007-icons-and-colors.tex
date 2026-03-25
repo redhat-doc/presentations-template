@@ -1,0 +1,141 @@
+\section{Icons, Colors, and Comparisons}
+
+\begin{frame}{FontAwesome Icons Showcase}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\scriptsize Common Icons}
+        \scriptsize
+        \begin{itemize}
+          \setlength{\itemsep}{2pt}
+          \item \faIcon{project-diagram} \texttt{\textbackslash faIcon\{project-diagram\}}
+          \item \faDatabase\ \texttt{\textbackslash faDatabase}
+          \item \faIcon{chart-bar} \texttt{\textbackslash faIcon\{chart-bar\}}
+          \item \faIcon{shield-alt} \texttt{\textbackslash faIcon\{shield-alt\}}
+          \item \faIcon{exchange-alt} \texttt{\textbackslash faIcon\{exchange-alt\}}
+          \item \faPlug\ \texttt{\textbackslash faPlug}
+          \item \faTerminal\ \texttt{\textbackslash faTerminal}
+          \item \faSearch\ \texttt{\textbackslash faSearch}
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\scriptsize Status Icons}
+        \scriptsize
+        \begin{itemize}
+          \setlength{\itemsep}{2pt}
+          \item \faBell\ \texttt{\textbackslash faBell}
+          \item \faEye\ \texttt{\textbackslash faEye}
+          \item \faClock\ \texttt{\textbackslash faClock}
+          \item \faIcon{check-circle} \texttt{\textbackslash faIcon\{check-circle\}}
+          \item \faIcon{times-circle} \texttt{\textbackslash faIcon\{times-circle\}}
+          \item \faIcon{exclamation-triangle} \texttt{\textbackslash faIcon\{exclamation-triangle\}}
+          \item \faIcon{info-circle} \texttt{\textbackslash faIcon\{info-circle\}}
+          \item \faIcon{cog} \texttt{\textbackslash faIcon\{cog\}}
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Before / After Comparison (TikZ)}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.72, transform shape]
+
+      % Before column
+      \node[font=\small\bfseries, accentred] at (3,5) {Before};
+      \draw[accentred, thick] (0.5,4.7) -- (5.5,4.7);
+
+      \node[rectangle, draw, rounded corners, fill=accentred!8, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (0.5,4) {
+        \faTerminal~Manual CLI operations
+      };
+      \node[rectangle, draw, rounded corners, fill=accentred!8, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (0.5,3) {
+        \faSearch~Parse logs to find issues
+      };
+      \node[rectangle, draw, rounded corners, fill=accentred!8, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (0.5,2) {
+        \faIcon{dice}~Deploy without testing
+      };
+      \node[rectangle, draw, rounded corners, fill=accentred!8, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (0.5,1) {
+        \faIcon{bomb}~Discover issues at 3 AM
+      };
+      \node[rectangle, draw, rounded corners, fill=accentred!8, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (0.5,0) {
+        \faIcon{file-alt}~Spend days on reports
+      };
+
+      % Arrow
+      \draw[->, >=stealth, very thick, accentblue] (6,2.5) -- (7.5,2.5);
+
+      % After column
+      \node[font=\small\bfseries, accentgreen] at (11,5) {After};
+      \draw[accentgreen, thick] (8.5,4.7) -- (13.5,4.7);
+
+      \node[rectangle, draw, rounded corners, fill=accentgreen!10, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (8.5,4) {
+        \faEye~Full visibility at a glance
+      };
+      \node[rectangle, draw, rounded corners, fill=accentgreen!10, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (8.5,3) {
+        \faBell~Instant alert notifications
+      };
+      \node[rectangle, draw, rounded corners, fill=accentgreen!10, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (8.5,2) {
+        \faIcon{check-circle}~Automated CI/CD pipeline
+      };
+      \node[rectangle, draw, rounded corners, fill=accentgreen!10, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (8.5,1) {
+        \faClock~Proactive monitoring 24/7
+      };
+      \node[rectangle, draw, rounded corners, fill=accentgreen!10, text width=4.5cm,
+            minimum height=0.7cm, font=\scriptsize, inner sep=0.15cm, anchor=west] at (8.5,0) {
+        \faIcon{mouse-pointer}~One-click report generation
+      };
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{\fontsize{11}{13}\selectfont Color Palette and Mathematical Symbols}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\scriptsize Defined Color Palette}
+        \scriptsize
+        \begin{tabular}{|l|l|}
+          \hline
+          \textbf{Name} & \textbf{Preview} \\
+          \hline
+          accentblue & \textcolor{accentblue}{$\blacksquare\blacksquare\blacksquare$} \\
+          \hline
+          accentgreen & \textcolor{accentgreen}{$\blacksquare\blacksquare\blacksquare$} \\
+          \hline
+          accentorange & \textcolor{accentorange}{$\blacksquare\blacksquare\blacksquare$} \\
+          \hline
+          accentred & \textcolor{accentred}{$\blacksquare\blacksquare\blacksquare$} \\
+          \hline
+          accentpurple & \textcolor{accentpurple}{$\blacksquare\blacksquare\blacksquare$} \\
+          \hline
+          accentgray & \textcolor{accentgray}{$\blacksquare\blacksquare\blacksquare$} \\
+          \hline
+        \end{tabular}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\scriptsize Mathematical Symbols}
+        \scriptsize
+        \begin{itemize}
+          \setlength{\itemsep}{2pt}
+          \item Latency $\leq$ 100ms target
+          \item Error rate $\approx$ 0.1\%
+          \item Throughput $\geq$ 1000 req/s
+          \item Cost $\sim$\$50K/year
+          \item Uptime: 99.99\% ($\times$ 4 nines)
+          \item Capacity: $n \times 2$ scaling
+          \item $\blacktriangleright$ Bullet alternative
+          \item $\bullet$ Standard bullet
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}

@@ -1,0 +1,79 @@
+\section{Dashboard Wireframe}
+
+\begin{frame}{Dashboard - Main Screen Layout}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.65, transform shape]
+      % Background
+      \fill[dashbg] (0,0) rectangle (14,8.5);
+
+      % Sidebar
+      \fill[sidebarblue] (0,0) rectangle (2.5,8.5);
+      \node[text=white, font=\tiny\bfseries] at (1.25,8) {MY APP};
+      \node[text=white, font=\tiny\bfseries] at (1.25,7.6) {DASHBOARD};
+      \draw[white, thick] (0.3,7.3) -- (2.2,7.3);
+
+      % Sidebar menu items
+      \foreach \y/\label in {6.8/Overview, 6.3/Services, 5.8/Deployments, 5.3/Monitoring, 4.8/Alerts, 4.3/Logs, 3.8/Settings} {
+        \node[text=white!80, font=\tiny, anchor=west] at (0.4,\y) {\label};
+      }
+
+      % Header bar
+      \fill[headerblue] (2.5,7.8) rectangle (14,8.5);
+      \node[text=white, font=\tiny\bfseries, anchor=west] at (3,8.15) {System Overview Dashboard};
+      \node[text=white!80, font=\tiny, anchor=east] at (13.5,8.15) {admin@example.com};
+
+      % KPI Cards Row
+      \fill[cardwhite, rounded corners=2pt] (3,6.8) rectangle (5.5,7.6);
+      \node[font=\tiny\bfseries, accentgreen] at (4.25,7.35) {12};
+      \node[font=\tiny, accentgray] at (4.25,7.0) {Healthy Services};
+
+      \fill[cardwhite, rounded corners=2pt] (5.8,6.8) rectangle (8.3,7.6);
+      \node[font=\tiny\bfseries, accentred] at (7.05,7.35) {2};
+      \node[font=\tiny, accentgray] at (7.05,7.0) {Degraded};
+
+      \fill[cardwhite, rounded corners=2pt] (8.6,6.8) rectangle (11.1,7.6);
+      \node[font=\tiny\bfseries, accentblue] at (9.85,7.35) {99.7\%};
+      \node[font=\tiny, accentgray] at (9.85,7.0) {Uptime (30d)};
+
+      \fill[cardwhite, rounded corners=2pt] (11.4,6.8) rectangle (13.8,7.6);
+      \node[font=\tiny\bfseries, accentorange] at (12.6,7.35) {1.2K};
+      \node[font=\tiny, accentgray] at (12.6,7.0) {Req/s};
+
+      % Status Distribution (left chart)
+      \fill[cardwhite, rounded corners=2pt] (3,3.5) rectangle (8.2,6.6);
+      \node[font=\tiny\bfseries, anchor=west] at (3.2,6.35) {Service Health Distribution};
+      \fill[accentgreen] (5.6,5) circle (1);
+      \fill[accentred] (5.6,5) -- ++(90:1) arc(90:115:1) -- cycle;
+      \fill[accentorange] (5.6,5) -- ++(115:1) arc(115:140:1) -- cycle;
+      \node[font=\tiny, anchor=west] at (3.3,3.9) {\textcolor{accentgreen}{$\blacksquare$} Healthy (85\%)};
+      \node[font=\tiny, anchor=west] at (5.8,3.9) {\textcolor{accentred}{$\blacksquare$} Critical (7\%)};
+      \node[font=\tiny, anchor=west] at (3.3,3.65) {\textcolor{accentorange}{$\blacksquare$} Warning (8\%)};
+
+      % Recent Events (right panel)
+      \fill[cardwhite, rounded corners=2pt] (8.5,3.5) rectangle (13.8,6.6);
+      \node[font=\tiny\bfseries, anchor=west] at (8.7,6.35) {Recent Events};
+      \fill[accentred!10] (8.7,5.7) rectangle (13.6,6.1);
+      \node[font=\tiny, accentred, anchor=west] at (8.8,5.9) {CRITICAL: db-primary latency spike};
+      \fill[accentorange!10] (8.7,5.2) rectangle (13.6,5.6);
+      \node[font=\tiny, accentorange, anchor=west] at (8.8,5.4) {WARN: disk usage at 85\%};
+      \fill[accentorange!10] (8.7,4.7) rectangle (13.6,5.1);
+      \node[font=\tiny, accentorange, anchor=west] at (8.8,4.9) {WARN: cert expires in 14d};
+      \fill[accentblue!10] (8.7,4.2) rectangle (13.6,4.6);
+      \node[font=\tiny, accentblue, anchor=west] at (8.8,4.4) {INFO: deploy v2.1.0 complete};
+      \fill[accentblue!10] (8.7,3.7) rectangle (13.6,4.1);
+      \node[font=\tiny, accentblue, anchor=west] at (8.8,3.9) {INFO: 3 new nodes joined};
+
+      % Timeline (bottom)
+      \fill[cardwhite, rounded corners=2pt] (3,0.3) rectangle (13.8,3.3);
+      \node[font=\tiny\bfseries, anchor=west] at (3.2,3.05) {Request Rate (24h)};
+      \draw[accentgray, thin] (3.5,0.6) -- (3.5,2.8);
+      \draw[accentgray, thin] (3.5,0.6) -- (13.5,0.6);
+      \draw[accentblue, thick] (3.5,2.0) -- (5,2.2) -- (6,2.4) -- (7,2.1) -- (8,2.3) -- (9,2.5) -- (10,2.2) -- (11,2.6) -- (12,2.4) -- (13.5,2.3);
+      \draw[accentred, thick, dashed] (3.5,0.9) -- (5,0.85) -- (6,0.9) -- (7,1.1) -- (8,0.95) -- (9,0.8) -- (10,0.9) -- (11,0.85) -- (12,0.8) -- (13.5,0.85);
+      \node[font=\tiny, accentgray, rotate=90] at (3.2,1.7) {Req/s};
+      \node[font=\tiny, accentgray] at (8.5,0.4) {Time (hours)};
+      \node[font=\tiny, anchor=west] at (4,2.85) {\textcolor{accentblue}{\rule{0.3cm}{1pt}} Success};
+      \node[font=\tiny, anchor=west] at (6.5,2.85) {\textcolor{accentred}{\rule{0.3cm}{1pt}} Errors};
+    \end{tikzpicture}
+  \end{center}
+\end{frame}

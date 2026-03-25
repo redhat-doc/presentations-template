@@ -1,0 +1,98 @@
+\section{Tables}
+
+\begin{frame}{Basic Table with Headers}
+  \begin{block}{Component Overview}
+    \scriptsize
+    Tables use the \texttt{tabular} environment with column specifiers:
+    \texttt{l} (left), \texttt{c} (center), \texttt{r} (right), \texttt{p\{width\}} (paragraph).
+  \end{block}
+
+  \vspace{0.2cm}
+
+  \begin{center}
+    \scriptsize
+    \begin{tabular}{|l|l|p{5cm}|}
+      \hline
+      \textbf{Layer} & \textbf{Component} & \textbf{Technology} \\
+      \hline
+      \hline
+      Frontend & Web UI & React.js + TypeScript \\
+      \hline
+      Backend & API Server & Rust (Axum) + Tokio \\
+      \hline
+      Storage & Database & PostgreSQL / TimescaleDB \\
+      \hline
+      Storage & Cache & Redis \\
+      \hline
+      Auth & Identity & Keycloak / OIDC \\
+      \hline
+      Observability & Metrics & Prometheus + Grafana \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Comparison Table with Colors}
+  \begin{center}
+    \tiny
+    \begin{tabular}{|p{3.5cm}|c|c|c|}
+      \hline
+      \textbf{Metric} & \textbf{Before} & \textbf{After} & \textbf{Improvement} \\
+      \hline
+      \hline
+      Deployment time & 45 minutes & \textbf{3 minutes} & \textcolor{accentgreen}{15x faster} \\
+      \hline
+      Incident detection & Hours & \textbf{Seconds} & \textcolor{accentgreen}{100x faster} \\
+      \hline
+      Configuration drift & Unknown & \textbf{Tracked} & \textcolor{accentgreen}{Full visibility} \\
+      \hline
+      Rollback capability & Manual & \textbf{Automated} & \textcolor{accentgreen}{One-click} \\
+      \hline
+      Test coverage & 45\% & \textbf{92\%} & \textcolor{accentgreen}{2x increase} \\
+      \hline
+      Mean time to recovery & 4 hours & \textbf{15 minutes} & \textcolor{accentgreen}{16x faster} \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  \vspace{0.3cm}
+
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{center}
+        \scriptsize
+        \begin{tabular}{|l|l|}
+          \hline
+          \textbf{Method} & \textbf{Best For} \\
+          \hline
+          Container & Quick deploys \\
+          \hline
+          Kubernetes & Production \\
+          \hline
+          RPM & Bare-metal \\
+          \hline
+          Systemd & Single-node \\
+          \hline
+        \end{tabular}
+      \end{center}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{center}
+        \scriptsize
+        \begin{tabular}{|l|r|}
+          \hline
+          \textbf{Resource} & \textbf{Allocation} \\
+          \hline
+          CPU & 500m \\
+          \hline
+          Memory & 256Mi \\
+          \hline
+          Storage & 10Gi \\
+          \hline
+          Replicas & 3 \\
+          \hline
+        \end{tabular}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}

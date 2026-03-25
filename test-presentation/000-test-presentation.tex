@@ -1,0 +1,90 @@
+\documentclass{beamer}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usetikzlibrary{shapes,arrows,positioning,fit,calc,backgrounds,decorations.markings,patterns}
+
+\usetheme{RedHat}
+
+%% Set the logo
+\redhatlogo{redhat-logo.png}
+
+%% Color definitions
+\definecolor{accentblue}{RGB}{50,100,180}
+\definecolor{accentgreen}{RGB}{40,167,69}
+\definecolor{accentorange}{RGB}{230,150,30}
+\definecolor{accentred}{RGB}{220,53,69}
+\definecolor{accentpurple}{RGB}{120,60,180}
+\definecolor{accentgray}{RGB}{100,100,100}
+\definecolor{lightbg}{RGB}{240,242,245}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{cardwhite}{RGB}{255,255,255}
+\definecolor{dashbg}{RGB}{240,242,245}
+\definecolor{headerblue}{RGB}{40,60,100}
+\definecolor{sidebarblue}{RGB}{30,50,80}
+
+%% Code styling
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    basicstyle=\ttfamily\tiny,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{codepurple},
+    numberstyle=\tiny\color{codegray},
+    showspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstdefinestyle{yamlstyle}{
+    backgroundcolor=\color{lightbg},
+    basicstyle=\ttfamily\tiny,
+    breaklines=true,
+    keywordstyle=\color{accentblue}\bfseries,
+    stringstyle=\color{accentgreen},
+    commentstyle=\color{accentgray},
+    showstringspaces=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+%% Title Information
+\title{Test Presentation}
+\subtitle{Template Feature Showcase}
+\author{Author Name}
+\secondauthor{Second Author Name}
+\date{March 25, 2026}
+
+\slidedescription{Template Demo}
+
+\begin{document}
+
+%% Title Slide
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+%% Index Slide
+\begin{frame}{Index}
+  \tiny
+  \tableofcontents
+\end{frame}
+
+\include{./001-text-and-blocks}
+\include{./002-lists-and-columns}
+\include{./003-code-snippets}
+\include{./004-tables}
+\include{./005-tikz-diagrams}
+\include{./006-dashboard-wireframe}
+\include{./007-icons-and-colors}
+\include{./008-final}
+
+\end{document}

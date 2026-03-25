@@ -1,0 +1,106 @@
+\section{Lists and Columns}
+
+\begin{frame}{Itemize and Enumerate Lists}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \textbf{Bullet List (itemize):}
+      \scriptsize
+      \begin{itemize}
+        \setlength{\itemsep}{3pt}
+        \item First level item
+        \item Another first level item
+          \begin{itemize}
+            \item Second level nested item
+            \item Another nested item
+              \begin{itemize}
+                \item Third level item
+              \end{itemize}
+          \end{itemize}
+        \item Back to first level
+      \end{itemize}
+
+      \vspace{0.2cm}
+
+      \textbf{Compact List:}
+      \begin{itemize}
+        \setlength{\itemsep}{0pt}
+        \item Tight spacing item one
+        \item Tight spacing item two
+        \item Tight spacing item three
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Numbered List (enumerate):}
+      \scriptsize
+      \begin{enumerate}
+        \setlength{\itemsep}{3pt}
+        \item First numbered item
+        \item Second numbered item
+          \begin{enumerate}
+            \item Nested numbered item
+            \item Another nested item
+          \end{enumerate}
+        \item Third numbered item
+        \item Fourth numbered item
+      \end{enumerate}
+
+      \vspace{0.2cm}
+
+      \textbf{Mixed List:}
+      \begin{enumerate}
+        \setlength{\itemsep}{0pt}
+        \item Numbered parent
+          \begin{itemize}
+            \item Bullet child
+            \item Another bullet child
+          \end{itemize}
+        \item Another numbered parent
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Multi-Column Layouts}
+  \begin{columns}[T]
+    \begin{column}{0.30\textwidth}
+      \begin{block}{\scriptsize Column 1}
+        \tiny
+        This is a narrow left column with a block. Useful for sidebar-style
+        content or navigation summaries.
+        \begin{itemize}
+          \setlength{\itemsep}{0pt}
+          \item Item A
+          \item Item B
+          \item Item C
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \begin{exampleblock}{\scriptsize Column 2}
+        \tiny
+        The middle column is slightly wider. Use different block types
+        across columns to create visual variety.
+        \begin{enumerate}
+          \setlength{\itemsep}{0pt}
+          \item Step one
+          \item Step two
+          \item Step three
+        \end{enumerate}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.30\textwidth}
+      \begin{alertblock}{\scriptsize Column 3}
+        \tiny
+        Right column with alert styling. Great for warnings or
+        important notes that complement the main content.
+      \end{alertblock}
+
+      \vspace{0.1cm}
+
+      \begin{block}{\scriptsize Extra Block}
+        \tiny
+        Multiple blocks can stack vertically within a single column.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}

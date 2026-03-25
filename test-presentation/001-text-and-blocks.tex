@@ -1,0 +1,61 @@
+\section{Text and Blocks}
+
+\begin{frame}{Standard Block Types}
+  \begin{block}{Information Block}
+    \scriptsize
+    This is a standard \textbf{block} environment used for general information.
+    It supports \textit{italic}, \textbf{bold}, and \texttt{monospace} text formatting.
+  \end{block}
+
+  \vspace{0.2cm}
+
+  \begin{exampleblock}{Example Block}
+    \scriptsize
+    This is an \textbf{exampleblock} environment. Use it to highlight examples,
+    best practices, or positive outcomes. It typically renders with a green tint.
+  \end{exampleblock}
+
+  \vspace{0.2cm}
+
+  \begin{alertblock}{Alert Block}
+    \scriptsize
+    This is an \textbf{alertblock} environment. Use it for warnings, critical
+    information, or items that require immediate attention.
+    \begin{itemize}
+      \item Critical point one
+      \item Critical point two
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Font Sizes and Text Styling}
+  \begin{block}{Available Font Sizes}
+    \tiny This is \textbackslash tiny text \\
+    \scriptsize This is \textbackslash scriptsize text \\
+    \footnotesize This is \textbackslash footnotesize text \\
+    \small This is \textbackslash small text \\
+    \normalsize This is \textbackslash normalsize text \\
+    \large This is \textbackslash large text \\
+    \Large This is \textbackslash Large text
+  \end{block}
+
+  \vspace{0.2cm}
+
+  \begin{exampleblock}{Dynamic Font Sizing}
+    \scriptsize
+    Use \texttt{\textbackslash fontsize\{size\}\{skip\}\textbackslash selectfont} for precise control: \\
+    {\fontsize{6}{7}\selectfont This is fontsize 6/7} \quad
+    {\fontsize{8}{9}\selectfont This is fontsize 8/9} \quad
+    {\fontsize{10}{12}\selectfont This is fontsize 10/12}
+  \end{exampleblock}
+
+  \vspace{0.2cm}
+
+  \scriptsize
+  \textbf{Colored text:}
+  \textcolor{accentblue}{Blue text},
+  \textcolor{accentgreen}{Green text},
+  \textcolor{accentred}{Red text},
+  \textcolor{accentorange}{Orange text},
+  \textcolor{accentpurple}{Purple text}
+\end{frame}

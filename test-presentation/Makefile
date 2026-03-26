@@ -16,6 +16,6 @@ clobber:
 	rm -frv *.aux *.nav *.out *.toc *.pdf *.log *.snm *.vrb *~
 
 test:
-	@-true
+	$(LATEXTOPDF) -no-pdf 000-test-presentation.tex
 
 .PHONY: all $(PROGRAM).pdf clean clobber test

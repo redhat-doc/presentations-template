@@ -10,10 +10,10 @@ $(PROGRAM).pdf:
 	$(MV) 000-test-presentation.pdf $(PROGRAM).pdf
 
 clean:
-	rm -frv *.aux *.nav *.out *.toc *.log *.snm *.vrb *~
+	rm -frv *.aux *.nav *.out *.toc *.log *.snm *.vrb *.xdv *~
 
 clobber:
-	rm -frv *.aux *.nav *.out *.toc *.pdf *.log *.snm *.vrb *~
+	rm -frv *.aux *.nav *.out *.toc *.pdf *.log *.snm *.vrb *.xdv *~
 
 test:
 	$(LATEXTOPDF) -no-pdf 000-test-presentation.tex
